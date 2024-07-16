@@ -1,0 +1,5 @@
+all:
+  hosts:
+    my-host01.example.com:
+      ansible_user: "{{ lookup('viczem.keepass.keepass', '<path>/<solution> - <env>', 'username') }}"
+      ansible_password: "{{ lookup('viczem.keepass.keepass', '<path>/<solution> - <env>', 'password') }}"
