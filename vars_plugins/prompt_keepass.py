@@ -89,7 +89,6 @@ class VarsModule(BaseVarsPlugin):
         self._cache[key] = value
 
     def _generate_data(self):
-        # Your logic to generate the data
         data = {
             'keepass_psw': ask_password()
         }

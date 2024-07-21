@@ -1,10 +1,6 @@
 ---
 collections:
-  - name: pfsensible.core
-    version: 0.6.1
   - name: ansible.posix
     version: 1.3.0
-  - name: viczem.keepass
-    version: 0.7.5
   - name: cielito.proxmox
     version: 2.1.0

@@ -1,3 +1,4 @@
 keepass_dbx: "/keepass.kdbx"
-keepass_ttl: 600
 
+#ansible_user: "{{ lookup('keepass', 'username') }}"
+#ansible_password: "{{ lookup('keepass', 'password') }}"
