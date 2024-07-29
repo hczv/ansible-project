@@ -2,3 +2,7 @@ keepass_dbx: "/keepass.kdbx"
 
 #ansible_user: "{{ lookup('keepass', 'username') }}"
 #ansible_password: "{{ lookup('keepass', 'password') }}"
+#ansible_jump_user: "{{ lookup('keepass', 'username', 'ssh.example.com') }}"
+#ansible_jump_password: "{{ lookup('keepass', 'password', 'ssh.example.com') }}"
+#ansible_ssh_common_args: "-o ProxyCommand=\"sshpass -p {{ ansible_jump_password }} ssh -W %h:%p -q {{ ansible_jump_user }}@ssh.example.com\""
+

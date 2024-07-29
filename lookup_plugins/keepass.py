@@ -31,8 +31,10 @@ def find_entries_with_field(kp, field_name, field_value):
     # Iterate through all entries in the KeePass database
     for entry in kp.entries:
         # Check if the entry has the specific field and if its value matches
-        if field_name in entry.custom_properties and entry.custom_properties[field_name] == field_value:
-            matching_entries.append(entry)
+        if field_name in entry.custom_properties and field_value in entry.custom_properties[field_name]:
+            for entryVal in entry.custom_properties[field_name].split():
+                if entryVal == field_value:
+                    matching_entries.append(entry)
 
     return matching_entries
 
@@ -53,6 +55,11 @@ class LookupModule(LookupBase):
         runtype = "password"
     else:
         raise AnsibleError("KeePass: term username or password is required.")
+
+    # Check if there is a second value, and it's actually has someting, assumts it's a new hostname to pull credentials for.
+    if len(terms) == 2 and terms[1]:
+        host = terms[1]
+        display.v("Keepass Host overwritten to: " + host)
 
     cache_identifier = host + "|" + runtype
     cached_data = self._get_cached_data(variables, cache_identifier)
@@ -79,9 +86,9 @@ class LookupModule(LookupBase):
     result = ['']
     domain_results = find_entries_with_field(self.kp, domain_field, domain)
     if len(domain_results) > 1:
-       print("More than one entry has the field %s matching: %s" % (domain_field, domain))
+       display.error("More than one entry has the field %s matching: %s" % (domain_field, domain))
        for domain_result in domain_results:
-           print("%s: %s" % (domain_result.title, domain_result.path))
+           display.error("%s: %s" % (domain_result.title, domain_result.path))
        raise AnsibleError("Too many matches for %s", domain_field)
     elif len(domain_results) == 1:
         result[0] = domain_results[0]
@@ -96,14 +103,14 @@ class LookupModule(LookupBase):
     elif len(host_results) == 1:
         result[0] = host_results[0]
 
-    print("Retrieved %s entry for %s" % (runtype, host))
+    #print("Retrieved %s entry for %s" % (runtype, host))
 
     if runtype == "username":
-        self._set_cached_data(variables, cache_identifier, host_results[0].username)
-        return [host_results[0].username]
+        self._set_cached_data(variables, cache_identifier, result[0].username)
+        return [result[0].username]
     elif runtype == "password":
-        self._set_cached_data(variables, cache_identifier, host_results[0].password)
-        return [host_results[0].password]
+        self._set_cached_data(variables, cache_identifier, result[0].password)
+        return [result[0].password]
 
     #return [host_results[0].password]
 
