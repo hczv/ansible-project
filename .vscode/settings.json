@@ -1,0 +1,12 @@
+{
+    "workbench.colorCustomizations": {
+        "tree.indentGuidesStroke": "#E0FAFF"
+    },
+    "workbench.tree.indent": 24,
+    "workbench.tree.renderIndentGuides": "always",
+    "editor.mouseWheelZoom": true,
+    "ansible.python.interpreterPath": "/bin/python3",
+    "explorer.autoReveal": false,
+    "workbench.iconTheme": "vs-minimal",
+    "explorer.compactFolders": false
+}

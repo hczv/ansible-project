@@ -1,15 +1,26 @@
 {
-	"name": "Ansible Container",
-	"dockerFile": "Dockerfile",
-
-	"mounts": [ 
+    "name": "Ansible Container",
+    "dockerFile": "Dockerfile",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installOhMyZsh": true,
+            "upgradePackages": true
+        },
+        "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+            "plugins": "zsh-syntax-highlighting",
+            "omzPlugins": "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+        }
+    },
+    "mounts": [
         //"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
         //"source=/mnt/c/Users/<user>/<path>/keepass.kdbx,target=/keepass.kdbx,type=bind",
         "source=${localWorkspaceFolder}/.devcontainer/userconfig,target=/userconfig,type=bind"
-	],
+    ],
     "remoteUser": "vscode",
-    "postCreateCommand": "pip install -r ${containerWorkspaceFolder}/requirements.txt && ansible-galaxy install -r ${containerWorkspaceFolder}/requirements.yml",
-
+    "postCreateCommand": "python3 -m pip install --user -r ${containerWorkspaceFolder}/requirements.txt && ansible-galaxy install -r ${containerWorkspaceFolder}/requirements.yml",
+    "containerEnv": {
+        "ANSIBLE_CONFIG": "${containerWorkspaceFolder}/ansible.cfg"
+    },
     "customizations": {
         "vscode": {
             "settings": {
@@ -26,7 +37,11 @@
                 "redhat.ansible",
                 "redhat.vscode-yaml",
                 "ms-azuretools.vscode-docker",
-                "numso.prettier-standard-vscode"
+                "numso.prettier-standard-vscode",
+                "jborean.ansibug",
+                "EditorConfig.EditorConfig",
+                "adamhartford.vscode-base64",
+                "nhoizey.gremlins"
             ]
         }
     }
