@@ -41,7 +41,9 @@
                 "jborean.ansibug",
                 "EditorConfig.EditorConfig",
                 "adamhartford.vscode-base64",
-                "nhoizey.gremlins"
+                "nhoizey.gremlins",
+                "pkief.material-icon-theme",
+                "eamodio.gitlens"
             ]
         }
     }

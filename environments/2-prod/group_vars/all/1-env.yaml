@@ -1,0 +1,5 @@
+---
+environment: prod
+env: prod
+env_id: p
+domain: prod.lab.internal

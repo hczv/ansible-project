@@ -1,0 +1,7 @@
+---
+- name: Let's ping servers
+  gather_facts: false
+  hosts: all
+  tasks:
+    - name: 'Do the ping'
+      ansible.builtin.ping:

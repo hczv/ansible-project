@@ -1,0 +1,6 @@
+---
+environment: nonprod
+env: nonp
+env_id: n
+domain: nonp.lab.internal
+

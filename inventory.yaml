@@ -1,5 +1,0 @@
-all:
-  hosts:
-    my-host01.example.com:
-      ansible_user: "{{ lookup('keepass', 'username') }}"
-      ansible_password: "{{ lookup('keepass', 'password') }}"

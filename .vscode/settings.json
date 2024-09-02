@@ -7,6 +7,7 @@
     "editor.mouseWheelZoom": true,
     "ansible.python.interpreterPath": "/bin/python3",
     "explorer.autoReveal": false,
-    "workbench.iconTheme": "vs-minimal",
-    "explorer.compactFolders": false
+    "workbench.iconTheme": "material-icon-theme",
+    "explorer.compactFolders": false,
+    "files.eol": "\n"
 }

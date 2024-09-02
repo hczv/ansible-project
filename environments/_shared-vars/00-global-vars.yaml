@@ -1,0 +1,9 @@
+---
+
+############################################
+######## Default keepass properties ########
+############################################
+
+keepass_dbx: "/keepass.kdbx"
+ansible_user: "{{ lookup('hczv.keepass.lookup', 'username') }}"
+ansible_password: "{{ lookup('hczv.keepass.lookup',  'password') }}"

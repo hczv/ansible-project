@@ -1,0 +1,7 @@
+---
+
+- hosts: <replace>
+  tasks:
+  - name: Print var
+    debug:
+      msg: "Property: {{ my_test_var }}"
